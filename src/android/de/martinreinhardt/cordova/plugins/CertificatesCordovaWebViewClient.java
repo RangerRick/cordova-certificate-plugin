@@ -51,7 +51,7 @@ public class CertificatesCordovaWebViewClient extends CordovaWebViewClient {
      */
     public static final String TAG = "CertificatesCordovaWebViewClient";
 
-    private boolean allowUntrusted = false;
+    private boolean allowUntrusted = true;
 
     /**
      * 

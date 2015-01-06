@@ -72,4 +72,23 @@ SOFTWARE.
 
     </platform>
 
+    <!-- windows phone -->
+    <!--
+    <platform name="wp8">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="CertificatesPlugin" >
+                <param name="wp-package" value="CertificatesPlugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+            <Capability Name="ID_CAP_NETWORKING" />
+        </config-file>
+
+        <source-file src="src/wp8/CertificatesPlugin.cs" />
+
+    </platform>
+    -->
+
 </plugin>
