@@ -25,7 +25,7 @@
  Certificate Plugin for Cordova
  
  */
-package de.martinreinhardt.cordova.plugins;
+package com.raccoonfink.cordova.plugins;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaActivity;
