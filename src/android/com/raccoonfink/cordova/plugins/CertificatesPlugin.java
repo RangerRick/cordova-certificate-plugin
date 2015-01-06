@@ -77,7 +77,7 @@ public class CertificatesPlugin extends CordovaPlugin {
             boolean allowUntrusted = args.getBoolean(0);
             Log.d(LOG_TAG, "Setting allowUntrusted to " + allowUntrusted);
             CordovaActivity ca = (CordovaActivity) this.cordova.getActivity();
-            CertificatesCordovaWebViewClient cWebClient = new CertificatesCordovaWebViewClient(
+            CertificatesAndroidWebViewClient cWebClient = new CertificatesAndroidWebViewClient(
                     this.cordova);
             cWebClient.setAllowUntrusted(allowUntrusted);
             webView.setWebViewClient(cWebClient);

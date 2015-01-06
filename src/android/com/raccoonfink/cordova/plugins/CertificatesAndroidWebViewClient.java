@@ -28,7 +28,7 @@
 package com.raccoonfink.cordova.plugins;
 
 import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaWebViewClient;
+import org.apache.cordova.AndroidWebViewClient;
 
 import android.net.http.SslError;
 import android.util.Log;
@@ -44,12 +44,12 @@ import android.webkit.WebView;
  * Copyright Martin Reinhardt 2014. All rights reserved.
  * 
  */
-public class CertificatesCordovaWebViewClient extends CordovaWebViewClient {
+public class CertificatesAndroidWebViewClient extends AndroidWebViewClient {
 
     /**
      * Logging Tag
      */
-    public static final String TAG = "CertificatesCordovaWebViewClient";
+    public static final String TAG = "CertificatesAndroidWebViewClient";
 
     private boolean allowUntrusted = true;
 
@@ -57,7 +57,7 @@ public class CertificatesCordovaWebViewClient extends CordovaWebViewClient {
      * 
      * @param cordova
      */
-    public CertificatesCordovaWebViewClient(CordovaInterface cordova) {
+    public CertificatesAndroidWebViewClient(CordovaInterface cordova) {
         super(cordova);
     }
 
@@ -80,7 +80,7 @@ public class CertificatesCordovaWebViewClient extends CordovaWebViewClient {
     }
 
     /**
-     * @see org.apache.cordova.CordovaWebViewClient#onReceivedSslError(WebView,
+     * @see org.apache.cordova.AndroidWebViewClient#onReceivedSslError(WebView,
      *      SslErrorHandler, SslError)
      */
     @Override

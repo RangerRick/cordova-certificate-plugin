@@ -67,7 +67,7 @@ SOFTWARE.
             </feature>
         </config-file>
 
-        <source-file src="src/android/com/raccoonfink/cordova/plugins/CertificatesCordovaWebViewClient.java" target-dir="src/com/raccoonfink/cordova/plugins/" />
+        <source-file src="src/android/com/raccoonfink/cordova/plugins/CertificatesAndroidWebViewClient.java" target-dir="src/com/raccoonfink/cordova/plugins/" />
         <source-file src="src/android/com/raccoonfink/cordova/plugins/CertificatesPlugin.java" target-dir="src/com/raccoonfink/cordova/plugins/" />
 
     </platform>
