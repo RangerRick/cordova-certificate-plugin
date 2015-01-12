@@ -49,7 +49,7 @@ public class CertificatesPlugin extends CordovaPlugin {
     /**
      * Logging Tag
      */
-    private static final String LOG_TAG = "Certificates";
+    private static final String LOG_TAG = "CertificatesPlugin";
 
     /**
      * Executes the request.
