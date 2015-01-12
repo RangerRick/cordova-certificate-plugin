@@ -37,7 +37,7 @@ Certificate.prototype = {
      *      boolean value to set desired behaviour
      */
     trustUnsecureCerts: function (boolActivateUnsecure) {
-        cordova.exec(null, null, 'CDVCertificate', 'setUntrusted', [boolActivateUnsecure]);
+        cordova.exec(null, null, 'Certificates', 'setUntrusted', [boolActivateUnsecure]);
     }
 };
 

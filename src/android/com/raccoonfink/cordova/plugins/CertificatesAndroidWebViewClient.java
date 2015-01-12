@@ -27,6 +27,7 @@
  */
 package com.raccoonfink.cordova.plugins;
 
+import org.apache.cordova.AndroidWebView;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.AndroidWebViewClient;
 
@@ -42,6 +43,7 @@ import android.webkit.WebView;
  * author, Martin Reinhardt on 23.06.14.
  * 
  * Copyright Martin Reinhardt 2014. All rights reserved.
+ * Updated to support Cordova 4.x/AndroidWebViewClient by Benjamin Reed.
  * 
  */
 public class CertificatesAndroidWebViewClient extends AndroidWebViewClient {
@@ -57,13 +59,12 @@ public class CertificatesAndroidWebViewClient extends AndroidWebViewClient {
      * 
      * @param cordova
      */
-    public CertificatesAndroidWebViewClient(CordovaInterface cordova) {
-        super(cordova);
+    public CertificatesAndroidWebViewClient(CordovaInterface cordova, AndroidWebView webView) {
+        super(cordova, webView);
     }
 
     /**
-     * @return true of usage of untrusted (self-signed) certificates is allowed,
-     *         otherwise false
+     * @return true of usage of untrusted (self-signed) certificates is allowed, otherwise false
      */
     public boolean isAllowUntrusted() {
         return allowUntrusted;
@@ -72,25 +73,22 @@ public class CertificatesAndroidWebViewClient extends AndroidWebViewClient {
     /**
      * 
      * 
-     * @param pAllowUntrusted
-     *            the allowUntrusted to set
+     * @param pAllowUntrusted the allowUntrusted to set
      */
     public void setAllowUntrusted(final boolean pAllowUntrusted) {
         this.allowUntrusted = pAllowUntrusted;
     }
 
     /**
-     * @see org.apache.cordova.AndroidWebViewClient#onReceivedSslError(WebView,
-     *      SslErrorHandler, SslError)
+     * @see org.apache.cordova.AndroidWebViewClient#onReceivedSslError(WebView, SslErrorHandler, SslError)
      */
     @Override
-    public void onReceivedSslError(WebView view, SslErrorHandler handler,
-            SslError error) {
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
         Log.d(TAG, "onReceivedSslError. Proceed? " + isAllowUntrusted());
         if (isAllowUntrusted()) {
             handler.proceed();
         } else {
-            handler.cancel();
+            super.onReceivedSslError(view, handler, error);
         }
     }
 }

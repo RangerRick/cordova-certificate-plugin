@@ -27,9 +27,11 @@
  */
 package com.raccoonfink.cordova.plugins;
 
+import org.apache.cordova.AndroidWebView;
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaActivity;
+import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -49,7 +51,9 @@ public class CertificatesPlugin extends CordovaPlugin {
     /**
      * Logging Tag
      */
-    private static final String LOG_TAG = "Certificates";
+    private static final String LOG_TAG = "CertificatesPlugin";
+
+    private CertificatesAndroidWebViewClient m_webViewClient;
 
     /**
      * Executes the request.
@@ -71,21 +75,29 @@ public class CertificatesPlugin extends CordovaPlugin {
      * 
      */
     @Override
-    public boolean execute(String action, JSONArray args,
-            CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("setUntrusted")) {
             boolean allowUntrusted = args.getBoolean(0);
             Log.d(LOG_TAG, "Setting allowUntrusted to " + allowUntrusted);
-            CordovaActivity ca = (CordovaActivity) this.cordova.getActivity();
-            CertificatesAndroidWebViewClient cWebClient = new CertificatesAndroidWebViewClient(
-                    this.cordova);
-            cWebClient.setAllowUntrusted(allowUntrusted);
-            webView.setWebViewClient(cWebClient);
-            ca.clearCache();
+            if (m_webViewClient != null) {
+                m_webViewClient.setAllowUntrusted(allowUntrusted);
+            }
             callbackContext.success();
             return true;
         }
         callbackContext.error("Invalid Command");
         return false;
+    }
+
+    @Override
+    public void initialize(final CordovaInterface cordova, final CordovaWebView webView) {
+        Log.d(LOG_TAG, "CertificatesPlugin.initialize: cordova=" + cordova.getClass().getName() + ", webView=" + webView.getClass().getName());
+        if (webView instanceof AndroidWebView) {
+            Log.d(LOG_TAG, "CertificatesPlugin.initialize: setting webViewClient to CertificatesAndroidWebViewClient");
+            m_webViewClient = new CertificatesAndroidWebViewClient(this.cordova, (AndroidWebView) webView);
+            ((AndroidWebView) webView).setWebViewClient(m_webViewClient);
+        } else {
+            Log.d(LOG_TAG, "CertificatesPlugin.initialize: doing nothing.");
+        }
     }
 }
