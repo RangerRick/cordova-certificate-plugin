@@ -35,7 +35,7 @@
 +(bool)getAllowAllRequests;
 @end
 @implementation NSURLRequest (AllowUntrustedCertificates)
-static bool _allowRequests = true;
+static bool _allowRequests = false;
 
 +(void)setAllowAllRequests:(BOOL)allowRequests
 {

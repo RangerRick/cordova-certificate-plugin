@@ -53,7 +53,7 @@ public class CertificatesAndroidWebViewClient extends AndroidWebViewClient {
      */
     public static final String TAG = "CertificatesAndroidWebViewClient";
 
-    private boolean allowUntrusted = true;
+    private boolean allowUntrusted = false;
 
     /**
      * 
