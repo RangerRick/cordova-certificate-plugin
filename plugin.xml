@@ -59,6 +59,7 @@ SOFTWARE.
     </platform>
 
     <!-- android -->
+    <!--
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/*">            
@@ -71,6 +72,7 @@ SOFTWARE.
         <source-file src="src/android/com/raccoonfink/cordova/plugins/CertificatesPlugin.java" target-dir="src/com/raccoonfink/cordova/plugins/" />
 
     </platform>
+    -->
 
     <!-- windows phone -->
     <!--
